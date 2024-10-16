@@ -135,7 +135,7 @@ def pretrained_resnet101(snippet_duration: int,
                          sample_size: int,
                          n_classes=8,
                          ft_begin_index=5,
-                         pretrained_resnet101_path="/home/ubuntu/private/data/resnet-101-kinetics.pth"):
+                         pretrained_resnet101_path="/content/drive/MyDrive/ModelsCTEN/resnext-101-64f-kinetics.pth"):
     n_finetune_classes = 1039
     model = resnet101(n_classes, snippet_duration, sample_size)
     model = model.cuda()
