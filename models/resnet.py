@@ -135,7 +135,7 @@ def pretrained_resnet101(snippet_duration: int,
                          sample_size: int,
                          n_classes=8,
                          ft_begin_index=5,
-                         pretrained_resnet101_path="/content/drive/MyDrive/ModelsCTEN/resnext-101-64f-kinetics.pth"):
+                         pretrained_resnet101_path="/content/drive/MyDrive/ModelsCTEN/r3d101_K_200ep.pth"):
     n_finetune_classes = 1039
     model = resnet101(n_classes, snippet_duration, sample_size)
     model = model.cuda()
@@ -149,9 +149,10 @@ def pretrained_resnet101(snippet_duration: int,
     new_state_dict = OrderedDict()
     old_state_dict = pretrain['state_dict']
     for name in old_state_dict:
-        new_name = name
-        new_state_dict[new_name] = old_state_dict[name]
-    model.load_state_dict(new_state_dict)
+        if not name.startswith('fc.'):  # Skip fc layer weights
+            new_name = name  # Adjust names if needed
+            new_state_dict[new_name] = old_state_dict[name]
+    model.load_state_dict(new_state_dict, strict=False)
     # ---------------------------------------------------------------- #
     model.fc = nn.Linear(model.fc.in_features, n_classes)
     model.fc = model.fc.cuda()
