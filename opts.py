@@ -19,11 +19,11 @@ def parse_opts():
                  type=str,
                  help='Global path of root directory'),
             dict(name="--video_path",
-                 default="/mnt/rhdd/zzc/data/VAA_VideoEmotion8/imgs",
+                 default="/content/drive/MyDrive/ModelsCTEN/imgs",
                  type=str,
                  help='Local path of videos', ),
             dict(name="--annotation_path",
-                 default='/home/ubuntu/zzc/code/vsenti/VAANet-master/data/ve8_04.json',
+                 default='/content/drive/MyDrive/ModelsCTEN/data/ve8_04.json',
                  type=str,
                  help='Local path of annotation file'),
             dict(name="--result_path",
@@ -35,7 +35,7 @@ def parse_opts():
                  default=''),
             dict(name='--audio_path',
                  type=str,
-                 default='/mnt/rhdd/zzc/data/VAA_VideoEmotion8/mp3',
+                 default='/content/drive/MyDrive/ModelsCTEN/mp3',
                  help='Local path of audios')
         ],
         'core': [
